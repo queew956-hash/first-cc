@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄钟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Drag region for hidden title bar -->
+    <div class="drag-region"></div>
+
+    <!-- Title -->
+    <h1 class="title">🍅 番茄钟</h1>
+
+    <!-- Timer Circle -->
+    <div class="timer-wrapper">
+      <svg class="progress-ring" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color: #ff6b6b; stop-opacity:1" />
+            <stop offset="100%" style="stop-color: #ee5a24; stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <circle
+          class="progress-ring-bg"
+          cx="100"
+          cy="100"
+          r="88"
+          fill="none"
+          stroke="#2d2d5e"
+          stroke-width="8"
+        />
+        <circle
+          id="progress-ring"
+          class="progress-ring-circle"
+          cx="100"
+          cy="100"
+          r="88"
+          fill="none"
+          stroke="url(#ringGradient)"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-dasharray="552.92"
+          stroke-dashoffset="0"
+        />
+      </svg>
+      <div class="timer-content">
+        <div id="time-display" class="time-display">25:00</div>
+        <div id="mode-label" class="mode-label">准备开始</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="controls">
+      <button id="btn-start" class="btn btn-primary" title="开始">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M6 3l12 7-12 7V3z"/>
+        </svg>
+      </button>
+      <button id="btn-pause" class="btn btn-secondary" title="暂停" disabled>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <rect x="4" y="3" width="4" height="14" rx="1"/>
+          <rect x="12" y="3" width="4" height="14" rx="1"/>
+        </svg>
+      </button>
+      <button id="btn-reset" class="btn btn-secondary" title="重置">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+      <button id="btn-skip" class="btn btn-secondary" title="跳过">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5 4l8 6-8 6V4zM15 4v12h2V4h-2z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Pomodoro counter -->
+    <div class="counter" id="pomodoro-counter">
+      <span>已完成：</span>
+      <span id="tomato-icons"></span>
+      <span id="count-label">0 个番茄</span>
+    </div>
+
+    <!-- Always on top toggle -->
+    <div class="bottom-row">
+      <label class="toggle-label">
+        <input type="checkbox" id="toggle-ontop" checked>
+        <span>置顶</span>
+      </label>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

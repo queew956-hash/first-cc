@@ -1,0 +1,225 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px 24px;
+  position: relative;
+}
+
+/* ===== Drag Region ===== */
+.drag-region {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  -webkit-app-region: drag;
+  z-index: 10;
+}
+
+/* ===== Title ===== */
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Timer Circle ===== */
+.timer-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 28px;
+}
+
+.progress-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  transition: stroke 0.3s ease;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timer-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.time-display {
+  font-size: 52px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.mode-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0a0c0;
+  margin-top: 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ===== Controls ===== */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  outline: none;
+  -webkit-app-region: no-drag;
+}
+
+.btn:active {
+  transform: scale(0.93);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 8px rgba(238, 90, 36, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c0c0d0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Pomodoro Counter ===== */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #9090b0;
+  margin-bottom: 16px;
+}
+
+#tomato-icons {
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+#count-label {
+  font-weight: 500;
+}
+
+/* ===== Bottom Row ===== */
+.bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #7070a0;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.toggle-label input[type="checkbox"] {
+  accent-color: #ff6b6b;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+/* ===== Mode Colors ===== */
+body.mode-work .progress-ring-circle {
+  filter: none;
+}
+
+body.mode-short-break .progress-ring-circle {
+  filter: hue-rotate(90deg) saturate(0.8);
+}
+
+body.mode-long-break .progress-ring-circle {
+  filter: hue-rotate(160deg) saturate(0.6);
+}
+
+body.mode-work .mode-label {
+  color: #ff6b6b;
+}
+
+body.mode-short-break .mode-label {
+  color: #4ecdc4;
+}
+
+body.mode-long-break .mode-label {
+  color: #45b7d1;
+}
